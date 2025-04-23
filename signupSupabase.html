@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+<body>
+  <h1>Cadastro</h1>
+  <input type="text" id="username" placeholder="Usuário"><br>
+  <input type="password" id="password" placeholder="Senha"><br>
+  <button onclick="signup()">Cadastrar</button>
+  <p><a href="index.html">Já tenho conta</a></p>
+
+  <script>
+    const supabase = supabase.createClient('https://YOUR_PROJECT.supabase.co', 'YOUR_ANON_KEY');
+
+    async function signup() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      const { data, error } = await supabase
+        .from('users')
+        .insert([{ username, password }]);
+
+      if (error) {
+        alert("Erro ao registrar: " + error.message);
+      } else {
+        alert("Registrado com sucesso!");
+        window.location.href = "index.html";
+      }
+    }
+  </script>
+</body>
+</html>

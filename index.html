@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css" />
+    <style>
+        body {
+            background: linear-gradient(to right, #2c3e50, #3498db);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .login-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 350px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .login-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .button.is-primary {
+            width: 100%;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1 class="login-title">Login</h1>
+        <form id="loginForm" action="login.php" method="POST">
+            <div class="field">
+                <label class="label">Usuário</label>
+                <div class="control">
+                    <input class="input" type="text" id="username" name="username" required>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Senha</label>
+                <div class="control">
+                    <input class="input" type="password" id="password" name="password" required>
+                </div>
+            </div>
+
+            <button class="button is-primary" type="submit">Entrar</button>
+        </form>
+        <div class="register-link">
+            <p>Não tem uma conta? <a href="signup.html">Registre-se</a></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            if (!username || !password) {
+                alert('Por favor, preencha todos os campos.');
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>

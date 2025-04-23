@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css" />
+    <style>
+        body {
+            background: linear-gradient(to right, #8e44ad, #3498db);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .signup-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 350px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .signup-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .button.is-success {
+            width: 100%;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h1 class="signup-title">Cadastro</h1>
+        <form action="register.php" method="POST">
+            <div class="field">
+                <label class="label">Usuário</label>
+                <div class="control">
+                    <input class="input" type="text" name="username" required>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Senha</label>
+                <div class="control">
+                    <input class="input" type="password" name="password" required>
+                </div>
+            </div>
+
+            <button class="button is-success" type="submit">Registrar</button>
+        </form>
+        <div class="login-link">
+            <p>Já tem uma conta? <a href="index.html">Faça login</a></p>
+        </div>
+    </div>
+</body>
+</html>

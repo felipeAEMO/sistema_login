@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <style>
+    body { font-family: sans-serif; text-align: center; margin-top: 100px; }
+    input { margin: 8px; padding: 8px; width: 200px; }
+  </style>
+</head>
+<body>
+  <h1>Login</h1>
+  <input type="text" id="username" placeholder="Usuário"><br>
+  <input type="password" id="password" placeholder="Senha"><br>
+  <button onclick="login()">Entrar</button>
+  <p><a href="signup.html">Criar conta</a></p>
+
+  <script>
+    const supabase = supabase.createClient('https://YOUR_PROJECT.supabase.co', 'YOUR_ANON_KEY');
+
+    async function login() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      const { data, error } = await supabase
+        .from('users')
+        .select('*')
+        .eq('username', username)
+        .maybeSingle();
+
+      if (!data || data.password !== password) {
+        alert("Login inválido");
+        return;
+      }
+
+      sessionStorage.setItem("user", username);
+      window.location.href = "painel.html";
+    }
+  </script>
+</body>
+</html>

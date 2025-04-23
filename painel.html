@@ -1,0 +1,43 @@
+<?php
+session_start();
+if (!isset($_SESSION['user'])) {
+    header("Location: index.html");
+    exit;
+}
+?>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Painel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css" />
+    <style>
+        body {
+            background: #ecf0f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .box {
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            background: white;
+            text-align: center;
+        }
+
+        .button.is-danger {
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1 class="title is-3">Bem-vindo, <?= htmlspecialchars($_SESSION['user']) ?>!</h1>
+        <p>Você está logado com sucesso.</p>
+        <a href="logout.php" class="button is-danger">Sair</a>
+    </div>
+</body>
+</html>
